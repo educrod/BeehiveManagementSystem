@@ -11,17 +11,19 @@ namespace BeehiveManagementSystem
         
         private static float honey = 25f;
         private static float nectar = 100f;
-        
-        
-        public static string StatusReport 
-        { 
-            get {
-                string hone
-                if (honey < LOW_LEVEL_WARNING)
-                {
-                    string honeyWarning = "LOW HONEY - ADD A HONEY MANUFACTURER";
-                }
-                //return $"{honey} units of honey\n{nectar} units of nectar";           
+
+
+        public static string StatusReport
+        {
+            get
+            {
+                string warnings = "";
+                string status = $"{honey} units of honey\n" +
+                                $"{nectar} units of nectar";
+                if (honey < LOW_LEVEL_WARNING) warnings += "LOW HONEY - ADD A HONEY MANUFACTURER\n";
+                if (nectar < LOW_LEVEL_WARNING) warnings += "LOW NECTAR - ADD A NECTAR MANUFACTURER\n";
+
+                return status + warnings;
             }
         }
 
